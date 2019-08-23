@@ -1,5 +1,58 @@
 // Javscript programs
 
+<h2> Open console to check program output </h2>
+
+1. Difference between ‘this’ and ‘let’ and when to use what, explain with examples.
+
+Answer 
+
+let :
+let gives you the privilege to declare variables that are limited in scope to the block, statement of expression unlike var.
+Variables declared inside a block {} can not be accessed from outside the block.
+Example:
+A. 
+<script>
+{ 
+  let x = 5;
+}
+</script>
+B.
+<script>
+for(let i=0;i<10;i++){
+	console.log(i); // i is visible thus is logged in the console as 0,1,2,....,9 
+} 
+console.log(i);  // throws an error as "i is not defined" because i is not visible 
+</script>
+
+this:
+
+The JavaScript this keyword refers to the object it belongs to.
+It has different values depending on where it is used:
+
+In a method, this refers to the owner object.
+Alone, this refers to the global object.
+In a function, this refers to the global object.
+In a function, in strict mode, this is undefined.
+In an event, this refers to the element that received the event.
+Methods like call(), and apply() can refer this to any object.
+
+Example:
+<script>
+// Create an object:
+var person = {
+  firstName: "James",
+  lastName : "Bond",
+  id     : 007,
+  fullName : function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+
+// Display data from the object:
+console.log(person.fullName());
+</script>
+
+
 2.Write a function which accepts an array of strings and returns a map of character to count of the character
 (including spaces and special characters).
 
