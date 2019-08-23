@@ -1,0 +1,69 @@
+// Javscript programs
+
+2.Write a function which accepts an array of strings and returns a map of character to count of the character
+(including spaces and special characters).
+
+<script>
+var arr = ["max", "mona", "hello world", "hi world"], obj = {}
+
+arr.forEach(function(w) {
+  w.split('').forEach(function(e) {
+    return obj[e] = (obj[e] || 0) + 1;
+  });
+});
+
+console.log(obj);
+</script>
+
+
+3.Write a function to return all the keys present in an object at any level.
+
+<script>
+var obj = {  a: 5, b: { c: { d: { e: 10} } }, x: { p: { q: { z: 5} } }};
+function getKeysFromObjectTree(obj) {
+    var keys = [];
+    for(var key in obj) {
+        keys.push(key);
+        if(typeof obj[key] === "object") {
+            var subkeys = getKeysFromObjectTree(obj[key]);
+            keys = keys.concat(subkeys.map(function(subkey) {
+                return subkey;
+            }));
+        }
+    }
+    return keys;
+}
+console.log(getKeysFromObjectTree(obj));
+</script>
+
+
+4. Write a function to reverse every word of a string.
+
+// Using split and reverse
+<script>
+function reverseStringOne(str){
+  return str.split("").reverse().join("").split(" ").join(" ")  
+}
+console.log(reverseStringOne('Welcome to the world of javascript'));
+
+</script>
+
+// Without using split and reverse and in O(1) space (since strings are immutable, assume that the input is a character array).
+<script>
+function reverseStringTwo(str){
+  let revstr = "";
+    for(let i = str.length-1; i>=0; i--){
+        revstr = revstr+ str[i];
+    }
+    return revstr;
+    }
+    console.log(reverseStringTwo('Welcome to the world of javascript'));
+</script>
+
+
+5. Write a function to remove duplicate strings from an array of strings.
+<script>
+var arrOfString = ["Hi Michel","Hello Mathew","Hey Nancy","I am John","James 007","Hey Nancy","Carl"];
+uniqueValues = [...new Set(arrOfString)];
+console.log(uniqueValues);
+</script>
